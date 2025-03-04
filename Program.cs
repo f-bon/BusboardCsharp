@@ -6,7 +6,9 @@ namespace BusBoardCsharp
     {
         public static async Task Main()
         {   
-            var arrivalsInfo = await ReachTfl.GetStopPointArrivals();
+            var stopPoint = Utils.UserInput("Please enter StopPoint ID: ");
+           
+            var arrivalsInfo = await TflClient.GetStopPointArrivals(stopPoint);
 
             var arrivalsSorted = arrivalsInfo.OrderBy(i => i.TimeToStation).ToArray();
             Array.Resize(ref arrivalsSorted, 5);

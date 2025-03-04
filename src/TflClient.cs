@@ -2,16 +2,14 @@ using RestSharp;
 
 namespace BusBoardCsharp.src
 {
-    class ReachTfl
+    class TflClient
     {
-        public static string stopPoint = Utils.UserInput("Please enter StopPoint ID: ");
-        
         public static RestClient tflStopPointClient = new RestClient
-            ($"https://api.tfl.gov.uk/StopPoint/{stopPoint}/Arrivals");
+            ($"https://api.tfl.gov.uk/StopPoint/");
 
-        public static async  Task<Arrivals[]> GetStopPointArrivals()
+        public static async  Task<Arrivals[]> GetStopPointArrivals(string stopPoint)
         {  
-            var request = new RestRequest();
+            var request = new RestRequest($"{stopPoint}/Arrivals");
             var response = await tflStopPointClient.GetAsync<Arrivals[]>(request);
             if (response == null)
             {

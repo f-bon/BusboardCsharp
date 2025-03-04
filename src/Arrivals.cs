@@ -5,6 +5,6 @@ namespace BusBoardCsharp.src
         public required string LineId { get; set; }
         public required string Towards { get; set; }
         public required string DestinationName { get; set; }
-        public int TimeToStation { get; set; }
+        public required int TimeToStation { get; set; }
     }
 }
