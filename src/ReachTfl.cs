@@ -4,13 +4,7 @@ namespace BusBoardCsharp.src
 {
     class ReachTfl
     {
-        public static string UserInput(string prompt)
-        {
-            Console.Write(prompt);
-            return Console.ReadLine();
-        }
-
-        public static string stopPoint = UserInput("Please enter StopPoint ID: ");
+        public static string stopPoint = Utils.UserInput("Please enter StopPoint ID: ");
         
         public static RestClient tflStopPointClient = new RestClient
             ($"https://api.tfl.gov.uk/StopPoint/{stopPoint}/Arrivals");
